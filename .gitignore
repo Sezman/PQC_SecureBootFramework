@@ -53,3 +53,25 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# --- Project build outputs ---
+pqc_verify
+oqs_demo
+generate_test_data
+
+# --- Test artifacts (generated crypto data) ---
+tests/pubkey.bin
+tests/seckey.bin
+tests/image.sig
+
+# --- ignore all binaries in tests ---
+tests/*.bin
+tests/*.sig
+
+# --- Build folders ---
+build/
+bin/
+
+# --- WSL / editor junk ---
+.vscode/
+.idea/
