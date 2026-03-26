@@ -1,7 +1,23 @@
-#include "util.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
+#include <stddef.h>
 
+/* ===== timer.h ===== */
+long get_time_us();
+
+/* ===== util.h ===== */
+unsigned char *read_binary_file(const char *filename, size_t *size);
+int write_binary_file(const char *filename, const unsigned char *data, size_t size);
+
+/* ===== timer.c ===== */
+long get_time_us() {
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return tv.tv_sec * 1000000L + tv.tv_usec;
+}
+
+/* ===== util.c ===== */
 unsigned char *read_binary_file(const char *filename, size_t *size) {
     FILE *file = fopen(filename, "rb");
     if (!file) {

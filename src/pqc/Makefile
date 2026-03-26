@@ -1,20 +1,29 @@
-CC=gcc
-CFLAGS=-Wall
-LIBS=-loqs -lcrypto
+CC = gcc
+CFLAGS = -Wall -O2
+LIBS = -loqs -lcrypto
 
-TARGET=pqc_verify
-SRC=main.c verify_pqc.c ../common/timer.c ../common/util.c
+TARGET = pqc_tool
+SRC = pqc_tool.c util.c
+
+TEST_DIR = ../../tests
 
 all: $(TARGET)
 
-$(TARGET):
+$(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LIBS)
 
-gen:
-	$(CC) $(CFLAGS) generate_test_data.c ../common/util.c -o generate_test_data $(LIBS)
+# Run full test (generate + verify)
+test: $(TARGET)
+	./$(TARGET) gen $(TEST_DIR)/image.bin $(TEST_DIR)/image.sig $(TEST_DIR)/pubkey.bin $(TEST_DIR)/seckey.bin
+	./$(TARGET) verify $(TEST_DIR)/image.bin $(TEST_DIR)/image.sig $(TEST_DIR)/pubkey.bin
 
-demo:
-	$(CC) $(CFLAGS) ../tools/oqs_demo.c ../common/timer.c -o oqs_demo $(LIBS)
+# Optional: just generate
+gen: $(TARGET)
+	./$(TARGET) gen $(TEST_DIR)/image.bin $(TEST_DIR)/image.sig $(TEST_DIR)/pubkey.bin $(TEST_DIR)/seckey.bin
+
+# Optional: just verify
+verify: $(TARGET)
+	./$(TARGET) verify $(TEST_DIR)/image.bin $(TEST_DIR)/image.sig $(TEST_DIR)/pubkey.bin
 
 clean:
-	rm -f $(TARGET) generate_test_data oqs_demo
+	rm -f $(TARGET)
