@@ -40,23 +40,10 @@ sudo ldconfig
 ...src/pqc make
 ```
 
-4. Generate Test Keys and Signature
-```
-make gen
-./generate_test_data
-```
-
-this creates
-```
-tests/pubkey.bin
-tests/seckey.bin
-tests/image.sig
-```
-
-5. Run Verification 
+4. Run Verification 
 
 ```
-./pqc_verify ../../tests/image.bin ../../tests/image.sig ../../tests/pubkey.bin
+make test
 ```
 
 Expected output
