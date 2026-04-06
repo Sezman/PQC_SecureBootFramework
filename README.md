@@ -21,7 +21,6 @@ The main goals of this project are:
  2. Integrate PQC verification into a secure boot workflow on QNX.
  3. Compare classical vs PQC vs hybrid verification approaches.
  4. Measure system impact including:
-     - Boot time
      - Signature verification time
      - Key size
      - Signature size
@@ -38,20 +37,15 @@ The main goals of this project are:
 ├── src
 │   Source code for the project
 │
-│   ├── pqc
-│   PQC signature verification implementation
+│   ├── rsa
+│   RSA source code to run on QNX
 │
-│   ├── qcrypto
-│   Integration experiments with the QNX qcrypto library
+│   ├── pqc_verify
+│   PQC source code to run on QNX
 │
-│   └── boot
-│   Secure boot verification logic and boot-stage simulation
+│   └── hybrid_verify
+│   Hybrid source code to run on QNX
 │
-├── tests
-│   Test files including sample firmware images, signatures, and keys
-│
-├── results
-│   Benchmark outputs, performance measurements, and logs
 │
 ├── README.md
 │   Project overview and instructions
