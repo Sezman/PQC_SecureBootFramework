@@ -1,14 +1,4 @@
-# -COMP4900E_PQC_QNX_BOOT-
-
-COMP 4900E – Real Time Operating Systems
-Carleton University – Winter 2026
-
-Group 4
-- Sebastian Ezman
-- Renee Hogarth
-- Evan Hall
-- Roopvir Kang
-- Hamza Rizwan
+# -PQC Secure Boot Framework-
 
 ## Project OverView
 
